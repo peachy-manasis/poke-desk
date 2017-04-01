@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'whatwg-fetch';
-import PokeList from './components/PokeList';
-import SelectItemsPerPageButtons from './components/SelectItemsPerPageButtons';
-import { Col, Pagination } from 'react-bootstrap/lib/';
+import PokemonIndexList from './components/PokemonIndexList';
 
 class App extends Component {
   constructor(props) {
@@ -17,6 +15,7 @@ class App extends Component {
       offset: 0,
       totalPages: 0,
       count: 0,
+      loaded: false
     };
     this.loadPokemon = this.loadPokemon.bind(this);
     this.handlePaginationSelect = this.handlePaginationSelect.bind(this);
@@ -35,7 +34,8 @@ class App extends Component {
       this.setState({
         pokemon: json.results,
         totalPages: pages,
-        count: json.count
+        count: json.count,
+        loaded: true
       })
       console.log(this.state)
     })
@@ -74,21 +74,21 @@ class App extends Component {
           <h2>The PokeDesk :3</h2>
         </div>
 
-        <SelectItemsPerPageButtons options={[10,50,100,200]}  selectedValue={this.state.limit} allValue={this.state.count} onOptionSelected={this.handleLimitChange} />
+        {this.state.loaded ? null : "Loading..."}
+        <PokemonIndexList
+          display={this.state.loaded}
+          options={[10,50,100,200]}
+          selectedValue={this.state.limit}
+          allValue={this.state.count}
+          onOptionSelected={this.handleLimitChange}
+          listOfPokemon={this.state.pokemon}
+          bsSize='small'
+          items={this.state.totalPages}
+          activePage={this.state.activePage}
+          onSelect={this.handlePaginationSelect}
+          totalPages={this.state.totalPages}
+        />
 
-        <Col sm={8} md={10} smOffset={2} mdOffset={1} >
-          <PokeList listOfPokemon={this.state.pokemon} />
-        </Col>
-
-        <Col sm={12} >
-          <Pagination 
-            bsSize='small' 
-            items={this.state.totalPages} 
-            activePage={this.state.activePage} 
-            onSelect={this.handlePaginationSelect}
-
-            />
-        </Col>
       </div>
     );
   }
