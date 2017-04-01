@@ -17,7 +17,8 @@ class App extends Component {
       totalPages: 0,
       count: 0,
       loaded: false,
-      showModal: false
+      showModal: false,
+      selectedPokemon: null
     };
     this.loadPokemon = this.loadPokemon.bind(this);
     this.handlePaginationSelect = this.handlePaginationSelect.bind(this);
@@ -70,10 +71,27 @@ class App extends Component {
     })
   }
 
-  handleModalOpen() {
-    this.setState({
-      showModal: true
-    });
+  handleModalOpen(pokemon) {
+    if(pokemon.url !== undefined)
+    {
+      fetch(`${pokemon.url}`)
+        .then(response => {
+          return response.json()
+        })
+        .then(json => {
+          console.log(json);
+          this.setState ({
+            selectedPokemon: json,
+            showModal: true
+          })
+        })
+        .catch(ex => {
+          console.log('parsing failed', ex);
+        })
+    }
+    else {
+      console.log('waht');
+    }
   }
 
   handleModalClose() {
@@ -103,9 +121,10 @@ class App extends Component {
           activePage={this.state.activePage}
           onSelect={this.handlePaginationSelect}
           totalPages={this.state.totalPages}
+          openModal={this.handleModalOpen}
         />
 
-        <PokemonModal openModal={this.handleModalOpen} closeModal={this.handleModalClose} showModal={this.state.showModal} />
+        <PokemonModal closeModal={this.handleModalClose} showModal={this.state.showModal} pokemon={this.state.selectedPokemon} />
 
       </div>
     );
