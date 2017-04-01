@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import 'whatwg-fetch';
 import PokemonIndexList from './components/PokemonIndexList';
+import PokemonModal from './components/PokemonModal';
 
 class App extends Component {
   constructor(props) {
@@ -15,11 +16,14 @@ class App extends Component {
       offset: 0,
       totalPages: 0,
       count: 0,
-      loaded: false
+      loaded: false,
+      showModal: false
     };
     this.loadPokemon = this.loadPokemon.bind(this);
     this.handlePaginationSelect = this.handlePaginationSelect.bind(this);
     this.handleLimitChange = this.handleLimitChange.bind(this);
+    this.handleModalOpen = this.handleModalOpen.bind(this);
+    this.handleModalClose = this.handleModalClose.bind(this);
   }
 
   loadPokemon(url) {
@@ -66,6 +70,18 @@ class App extends Component {
     })
   }
 
+  handleModalOpen() {
+    this.setState({
+      showModal: true
+    });
+  }
+
+  handleModalClose() {
+    this.setState({
+      showModal: false
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -88,6 +104,8 @@ class App extends Component {
           onSelect={this.handlePaginationSelect}
           totalPages={this.state.totalPages}
         />
+
+        <PokemonModal openModal={this.handleModalOpen} closeModal={this.handleModalClose} showModal={this.state.showModal} />
 
       </div>
     );
