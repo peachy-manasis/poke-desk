@@ -16,22 +16,57 @@
 	"buffers":
 	[
 		{
-			"contents": "import React from 'react';\nimport ReactDOM from 'react-dom';\nimport App from './App';\nimport './index.css';\n\nlet baseUrl = 'http://pokeapi.co/api/v2/';\n\nReactDOM.render(\n  <App baseUrl={baseUrl} />,\n  document.getElementById('root')\n);\n",
-			"file": "src/index.js",
-			"file_size": 174,
-			"file_write_time": 131355082087775531,
+			"file": "src/App.js",
 			"settings":
 			{
-				"buffer_size": 236,
+				"buffer_size": 3460,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/App.js",
+			"file": "src/components/PokemonIndexList.js",
 			"settings":
 			{
-				"buffer_size": 496,
+				"buffer_size": 880,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/PokemonModal.js",
+			"settings":
+			{
+				"buffer_size": 736,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/PokemonInfo.js",
+			"settings":
+			{
+				"buffer_size": 893,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/App.css",
+			"settings":
+			{
+				"buffer_size": 630,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/components/PokeList.js",
+			"settings":
+			{
+				"buffer_size": 543,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -42,12 +77,12 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -68,11 +103,23 @@
 	"expanded_folders":
 	[
 		"/E/Documents/poke-desk",
+		"/E/Documents/poke-desk/node_modules/whatwg-fetch",
+		"/E/Documents/poke-desk/node_modules/yargs-parser",
 		"/E/Documents/poke-desk/public",
-		"/E/Documents/poke-desk/src"
+		"/E/Documents/poke-desk/src",
+		"/E/Documents/poke-desk/src/components"
 	],
 	"file_history":
 	[
+		"/E/Documents/poke-desk/src/App.css",
+		"/E/Documents/poke-desk/src/components/PokemonIndexList.js",
+		"/E/Documents/poke-desk/src/components/PaginationContainer.js",
+		"/E/Documents/poke-desk/src/logo.svg",
+		"/E/Documents/poke-desk/src/components/SelectItemsPerPageButtons.js",
+		"/E/Documents/poke-desk/src/components/PokeList.js",
+		"/E/Documents/poke-desk/package.json",
+		"/E/Documents/poke-desk/public/index.html",
+		"/E/Documents/poke-desk/src/index.js",
 		"/E/Documents/react-test/public/index.html",
 		"/E/Documents/peachy-manasis.github.io/index.html",
 		"/C/Users/Peachy/AppData/Local/Temp/scp56904/var/www/html/sugarcrm.log",
@@ -191,20 +238,11 @@
 		"/C/Users/Peachy/AppData/Local/Temp/scp35487/home/crmworks/bbwebsvc/public/.htaccess",
 		"/C/Users/Peachy/AppData/Local/Temp/scp01010/home/crmworks/bbwebsvc/storage/logs/laravel.log",
 		"/C/Users/Peachy/AppData/Local/Temp/scp27356/home/crmworks/bbwebsvc/composer.json",
-		"/C/Users/Peachy/AppData/Local/Temp/scp28039/home/crmworks/bbwebsvc/config/app.php",
-		"/C/Users/Peachy/AppData/Local/Temp/scp04197/home/crmworks/bbwebsvc/app/Http/Controllers/UserController.php",
-		"/C/Users/Peachy/AppData/Local/Temp/scp41208/home/crmworks/bbwebsvc/app/Http/routes.php",
-		"/C/Users/Peachy/AppData/Local/Temp/scp00085/home/crmworks/bbwebsvc/resources/views/welcome.blade.php",
-		"/C/Users/Peachy/AppData/Local/Temp/scp22345/var/www/html/.htaccess",
-		"/C/Users/Peachy/AppData/Local/Temp/scp39736/home/crmworks/bbwebsvc/.env",
-		"/C/Users/Peachy/AppData/Local/Temp/scp39228/home/crmworks/bbwebsvc/app/Http/routes.php",
-		"/C/Users/Peachy/AppData/Local/Temp/scp37509/home/crmworks/bbwebsvc/app/Http/Controllers/AuthenticationController.php",
-		"/C/Users/Peachy/AppData/Local/Temp/scp49092/home/crmworks/bbwebsvc/public/.htaccess",
-		"/C/Users/Peachy/AppData/Local/Temp/scp24111/home/crmworks/bbwebsvc/config/app.php"
+		"/C/Users/Peachy/AppData/Local/Temp/scp28039/home/crmworks/bbwebsvc/config/app.php"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -218,6 +256,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"showModal",
 			"users",
 			"Lou",
 			"mcrypt",
@@ -256,24 +295,83 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/index.js",
+					"file": "src/App.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 236,
+						"buffer_size": 3460,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								235,
-								235
+								3407,
+								3407
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1444.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/components/PokemonIndexList.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 880,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								693,
+								693
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/components/PokemonModal.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 736,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								736,
+								736
 							]
 						],
 						"settings":
@@ -284,31 +382,29 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/App.js",
-					"semi_transient": true,
+					"buffer": 3,
+					"file": "src/components/PokemonInfo.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 496,
+						"buffer_size": 893,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								609,
+								609
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -316,17 +412,76 @@
 					},
 					"stack_index": 0,
 					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/App.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								536,
+								536
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/components/PokeList.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								332,
+								332
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -397,7 +552,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 190.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
